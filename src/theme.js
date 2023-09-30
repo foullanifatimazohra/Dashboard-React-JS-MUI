@@ -1,7 +1,7 @@
 import { createContext, useState, useMemo } from "react";
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
-// color design token
+// color design tokens export
 export const tokens = (mode) => ({
   ...(mode === "dark"
     ? {
@@ -20,7 +20,7 @@ export const tokens = (mode) => ({
           100: "#d0d1d5",
           200: "#a1a4ab",
           300: "#727681",
-          400: "#434957",
+          400: "#1F2A40",
           500: "#141b2d",
           600: "#101624",
           700: "#0c101b",
@@ -39,15 +39,15 @@ export const tokens = (mode) => ({
           900: "#0f2922",
         },
         redAccent: {
-          100: "#dbdcdb",
-          200: "#b7b9b7",
-          300: "#939592",
-          400: "#6f726e",
-          500: "#4b4f4a",
-          600: "#3c3f3b",
-          700: "#2d2f2c",
-          800: "#1e201e",
-          900: "#0f100f",
+          100: "#f8dcdb",
+          200: "#f1b9b7",
+          300: "#e99592",
+          400: "#e2726e",
+          500: "#db4f4a",
+          600: "#af3f3b",
+          700: "#832f2c",
+          800: "#58201e",
+          900: "#2c100f",
         },
         blueAccent: {
           100: "#e1e2fe",
@@ -77,9 +77,9 @@ export const tokens = (mode) => ({
           100: "#040509",
           200: "#080b12",
           300: "#0c101b",
-          400: "#101624",
+          400: "#f2f0f0", // manually changed
           500: "#141b2d",
-          600: "#434957",
+          600: "#1F2A40",
           700: "#727681",
           800: "#a1a4ab",
           900: "#d0d1d5",
@@ -96,15 +96,15 @@ export const tokens = (mode) => ({
           900: "#dbf5ee",
         },
         redAccent: {
-          100: "#0f100f",
-          200: "#1e201e",
-          300: "#2d2f2c",
-          400: "#3c3f3b",
-          500: "#4b4f4a",
-          600: "#6f726e",
-          700: "#939592",
-          800: "#b7b9b7",
-          900: "#dbdcdb",
+          100: "#2c100f",
+          200: "#58201e",
+          300: "#832f2c",
+          400: "#af3f3b",
+          500: "#db4f4a",
+          600: "#e2726e",
+          700: "#e99592",
+          800: "#f1b9b7",
+          900: "#f8dcdb",
         },
         blueAccent: {
           100: "#151632",
@@ -120,7 +120,7 @@ export const tokens = (mode) => ({
       }),
 });
 
-// mui settings
+// mui theme settings
 export const themeSettings = (mode) => {
   const colors = tokens(mode);
   return {
@@ -161,33 +161,33 @@ export const themeSettings = (mode) => {
               default: "#fcfcfc",
             },
           }),
-      typography: {
+    },
+    typography: {
+      fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+      fontSize: 12,
+      h1: {
         fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 12,
-        h1: {
-          fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-          fontSize: 40,
-        },
-        h2: {
-          fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-          fontSize: 32,
-        },
-        h3: {
-          fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-          fontSize: 24,
-        },
-        h4: {
-          fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-          fontSize: 20,
-        },
-        h5: {
-          fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-          fontSize: 16,
-        },
-        h6: {
-          fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-          fontSize: 14,
-        },
+        fontSize: 40,
+      },
+      h2: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 32,
+      },
+      h3: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 24,
+      },
+      h4: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 20,
+      },
+      h5: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 16,
+      },
+      h6: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 14,
       },
     },
   };
