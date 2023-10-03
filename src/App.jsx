@@ -12,7 +12,7 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="App">
+        <div className="app">
           <SideBar />
           <main className="content">
             <TopBar />
