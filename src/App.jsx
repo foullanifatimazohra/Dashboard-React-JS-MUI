@@ -9,6 +9,7 @@ import { Dashboard } from "./pages/dashboard";
 import Team from "./pages/team";
 import Contact from "./pages/contacts";
 import Invoices from "./pages/invoices";
+import FormPage from "./pages/form";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -25,6 +26,7 @@ function App() {
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contact />} />
               <Route path="/invoices" element={<Invoices />} />
+              <Route path="/form" element={<FormPage />} />
             </Routes>
           </main>
         </div>
