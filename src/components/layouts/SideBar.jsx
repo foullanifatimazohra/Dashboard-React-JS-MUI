@@ -94,40 +94,9 @@ function SideBar() {
               </Box>
             )}
           </MenuItem>
-          {/* USER BOX */}
-          {!isCollapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
-                  alt="Prodile user"
-                  width="100px"
-                  height="100px"
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Ed Roh
-                </Typography>
-                <Typography
-                  variant="h5"
-                  color={colors.greenAccent[500]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  VP Fancy Admin
-                </Typography>
-              </Box>
-            </Box>
-          )}
+
           {/* MENU ITEMS  */}
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box paddingLeft={isCollapsed ? undefined : "2%"}>
             <Item
               title="Dashboard"
               to="/"
