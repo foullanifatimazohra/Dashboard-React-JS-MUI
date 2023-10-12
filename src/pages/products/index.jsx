@@ -6,6 +6,8 @@ import Header from "../../components/ui/Header";
 import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { InputBase } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 export const Products = () => {
   const theme = useTheme();
@@ -19,6 +21,15 @@ export const Products = () => {
         console.log(err.message);
       });
   }, []);
+
+  const handleChange = (value) => {
+    fetch(`https://dummyjson.com/products/search?q=${value}`)
+      .then((response) => response.json())
+      .then((actualData) => setProductsData(actualData.products))
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   const colors = tokens(theme.palette.mode);
   const columns = [
@@ -69,7 +80,7 @@ export const Products = () => {
             borderRadius="20px"
             textAlign="center"
           >
-            {stock}{" "}
+            {stock}
           </Box>
         );
       },
@@ -128,6 +139,31 @@ export const Products = () => {
   return (
     <Box m="20px">
       <Header title="Products" subtitle="Managing your Products" />
+      <Box display="flex" justifyContent="end">
+        <Box
+          display="flex"
+          bgcolor={colors.primary[400]}
+          width={300}
+          borderRadius="3px"
+          my={2}
+        >
+          <InputBase
+            sx={{
+              ml: 2,
+              flex: 1,
+            }}
+            placeholder="Search"
+            onChange={(e) => {
+              handleChange(e.currentTarget.value);
+              // console.log(e.currentTarget.value);
+            }}
+          />
+          <IconButton type="button" sx={{ p: 1 }}>
+            <SearchIcon />
+          </IconButton>
+        </Box>
+      </Box>
+
       <DataGrid
         rows={productsData}
         columns={columns}
