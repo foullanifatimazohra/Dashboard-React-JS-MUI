@@ -41,6 +41,7 @@ function SideBar() {
       sx={{
         "& .css-dip3t8": {
           background: `${colors.primary[400]} !important`,
+          height: "100vh",
         },
         "& .css-1wvake5": {
           borderRightWidth: " 0px !important",

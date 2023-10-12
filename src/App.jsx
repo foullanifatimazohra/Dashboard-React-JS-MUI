@@ -5,9 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import SideBar from "./components/layouts/SideBar";
 //pages
 import { Dashboard } from "./pages/dashboard";
-import Team from "./pages/team";
-import Contact from "./pages/contacts";
-import FormPage from "./pages/form";
+import { Categories } from "./pages/categories";
+import { Products } from "./pages/products";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -21,9 +20,8 @@ function App() {
             {/* <TopBar /> */}
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/contacts" element={<Contact />} />
-              <Route path="/form" element={<FormPage />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/categories" element={<Categories />} />
             </Routes>
           </main>
         </div>
