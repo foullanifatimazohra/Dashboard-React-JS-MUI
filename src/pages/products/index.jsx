@@ -3,6 +3,9 @@ import { useTheme, Box } from "@mui/material";
 import { tokens } from "../../theme";
 import { DataGrid } from "@mui/x-data-grid";
 import Header from "../../components/ui/Header";
+import { IconButton } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Products = () => {
   const theme = useTheme();
@@ -95,11 +98,43 @@ export const Products = () => {
         );
       },
     },
+    {
+      name: "Actions",
+      headerName: "Actions",
+      type: "button",
+      align: "end",
+      sortable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => {
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <IconButton onClick={() => console.log(params.id)}>
+              <EditIcon />
+            </IconButton>
+            <IconButton onClick={() => console.log(params.id)}>
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+        );
+      },
+    },
   ];
   return (
     <Box m="20px">
       <Header title="Products" subtitle="Managing your Products" />
-      <DataGrid rows={productsData} columns={columns} />
+      <DataGrid
+        rows={productsData}
+        columns={columns}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 8 } },
+        }}
+      />
     </Box>
   );
 };
