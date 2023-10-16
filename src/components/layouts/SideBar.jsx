@@ -40,6 +40,8 @@ function SideBar() {
     <Box
       sx={{
         "& .css-dip3t8": {
+          position: "fixed",
+          width: isCollapsed ? 80 : 250,
           background: `${colors.primary[400]} !important`,
           height: "100vh",
         },
