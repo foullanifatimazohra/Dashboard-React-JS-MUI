@@ -8,10 +8,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export const Products = () => {
   const theme = useTheme();
   const [productsData, setProductsData] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products`)
@@ -125,7 +128,12 @@ export const Products = () => {
               alignItems: "center",
             }}
           >
-            <IconButton onClick={() => console.log(params.id)}>
+            <IconButton
+              onClick={() => {
+                navigate(`${params.id}`);
+                console.log(params.id);
+              }}
+            >
               <EditIcon />
             </IconButton>
             <IconButton onClick={() => console.log(params.id)}>
@@ -139,6 +147,16 @@ export const Products = () => {
   return (
     <Box m="20px">
       <Header title="Products" subtitle="Managing your Products" />
+      <Box display="flex" justifyContent="end" mt="20px">
+        <Button
+          type="submit"
+          color="secondary"
+          variant="contained"
+          onClick={() => navigate("add")}
+        >
+          Create New Product
+        </Button>
+      </Box>
       <Box display="flex" justifyContent="end">
         <Box
           display="flex"

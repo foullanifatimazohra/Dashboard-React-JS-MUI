@@ -7,6 +7,7 @@ import SideBar from "./components/layouts/SideBar";
 import { Dashboard } from "./pages/dashboard";
 import { Categories } from "./pages/categories";
 import { Products } from "./pages/products";
+import { SingleProduct } from "./pages/products/SingleProduct";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -22,6 +23,8 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/categories" element={<Categories />} />
+              <Route path="/products/:id" element={<SingleProduct />} />
+              <Route path="/products/add" element={<SingleProduct />} />
             </Routes>
           </main>
         </div>
