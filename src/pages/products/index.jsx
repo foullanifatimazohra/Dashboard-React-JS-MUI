@@ -30,7 +30,11 @@ export const Products = () => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then(() => alert("your product has been deleted"));
+      .then(() => {
+        alert("your product has been deleted");
+
+        setProductsData(productsData.filter((row) => row.id !== id));
+      });
   };
 
   const handleChange = (value) => {
