@@ -25,6 +25,14 @@ export const Products = () => {
       });
   }, []);
 
+  const handleDelete = (id) => {
+    fetch(`https://dummyjson.com/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => alert("your product has been deleted"));
+  };
+
   const handleChange = (value) => {
     fetch(`https://dummyjson.com/products/search?q=${value}`)
       .then((response) => response.json())
@@ -131,12 +139,11 @@ export const Products = () => {
             <IconButton
               onClick={() => {
                 navigate(`${params.id}`);
-                console.log(params.id);
               }}
             >
               <EditIcon />
             </IconButton>
-            <IconButton onClick={() => console.log(params.id)}>
+            <IconButton onClick={() => handleDelete(params.id)}>
               <DeleteIcon />
             </IconButton>
           </Box>
