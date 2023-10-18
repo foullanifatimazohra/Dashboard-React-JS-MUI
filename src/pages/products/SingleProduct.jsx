@@ -116,7 +116,7 @@ export const SingleProduct = () => {
                     variant="contained"
                     size="large"
                   >
-                    Create New User
+                    {id ? "Update Product" : "Add Product"}
                   </Button>
                 </Box>
               </Box>
