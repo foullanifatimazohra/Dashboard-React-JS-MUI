@@ -4,7 +4,8 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  IconButton,
+  Box,
+  Button,
 } from "@mui/material";
 import { AddPhotoAlternate } from "@mui/icons-material";
 
@@ -20,7 +21,7 @@ function FileUploadCard() {
   };
 
   return (
-    <Card>
+    <Box>
       <input
         type="file"
         accept="image/*"
@@ -29,28 +30,41 @@ function FileUploadCard() {
         onChange={handleImageChange}
       />
       <label htmlFor="image-upload">
-        <IconButton component="span">
-          <AddPhotoAlternate />
-        </IconButton>
+        <Button
+          variant="contained"
+          color="primary"
+          component="span"
+          startIcon={<AddPhotoAlternate />}
+        >
+          Upload Image
+        </Button>
       </label>
       <CardContent>
         {selectedImage ? (
-          <CardMedia
-            component="img"
-            alt="Selected Image"
-            sx={{
-              width: "200px !important",
-            }}
-            height="200"
-            image={selectedImage}
-          />
+          <Card style={{ maxWidth: 200, margin: 8 }}>
+            <CardMedia
+              component="img"
+              alt={`Image`}
+              height="200"
+              image={selectedImage}
+            />
+            <CardContent>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => setSelectedImage(null)}
+              >
+                Remove
+              </Button>
+            </CardContent>
+          </Card>
         ) : (
           <Typography variant="body2" color="textSecondary" component="p">
             No image selected
           </Typography>
         )}
       </CardContent>
-    </Card>
+    </Box>
   );
 }
 
