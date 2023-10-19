@@ -48,6 +48,7 @@ const Invoices = () => {
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
+            color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
@@ -65,9 +66,6 @@ const Invoices = () => {
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
             backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
