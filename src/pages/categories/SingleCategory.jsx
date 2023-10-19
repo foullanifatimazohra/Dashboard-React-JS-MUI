@@ -12,6 +12,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import FileUploadCard from "../../components/ui/FileUpload";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 function SingleCategory() {
   const { id } = useParams();
@@ -20,31 +22,29 @@ function SingleCategory() {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  const [initialValues, setInitialValues] = useState({
+
+  const initialValues = {
     title: "",
+    picture: null,
+  };
+  const [initialValuesSub, setInitialValuesSub] = useState({
+    subtitle: "",
     parentCategory: "",
-    thumbnail: "",
-    // images: [],
   });
 
   useEffect(() => {
     // fetch the single category data
-    setInitialValues([]);
+    //setInitialValuesParent([]);
+    if (id) {
+      setInitialValuesSub([]);
+    }
   }, [id]);
 
-  const validationSchema = yup.object().shape({
+  const validationSchema = yup.object({
     title: yup.string().required("this field is required"),
-    description: yup.string().required("this field is required"),
-    price: yup.number().min(0).required("this field is required"),
-    discountPercentage: yup.number().min(0).required("this field is required"),
-    rating: yup.number().min(0).required("this field is required"),
-    stock: yup.number().min(0).required("this field is required"),
-    brand: yup.string().required("this field is required"),
-    category: yup.string().required("this field is required"),
+    picture: yup.mixed().required("you have to add a picture"),
   });
-  const handleSubmit = (values) => {
-    console.log("Form values:", values);
-  };
+
   return (
     <Box m="20px" pb={5}>
       <Header
@@ -84,10 +84,16 @@ function SingleCategory() {
         <Formik
           enableReinitialize={true}
           initialValues={initialValues}
-          onSubmit={handleSubmit}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 400);
+          }}
           validationSchema={validationSchema}
         >
-          {() => {
+          {({ setFieldValue, values }) => {
+            console.log(values);
             return (
               <Form>
                 <Box display="flex" flexDirection="column" gap={4}>
@@ -97,7 +103,12 @@ function SingleCategory() {
                     label="Category Title"
                     as={TextField}
                   />
-                  <FileUploadCard />
+                  <Field
+                    id="picture"
+                    name="picture"
+                    setFieldValue={setFieldValue}
+                    as={FileUploadCard}
+                  />
 
                   <Box display="flex" justifyContent="end" mt="20px">
                     <Button
@@ -114,7 +125,70 @@ function SingleCategory() {
             );
           }}
         </Formik>
-      ) : null}
+      ) : (
+        <Formik
+          enableReinitialize={true}
+          initialValues={initialValuesSub}
+          onSubmit={(values) => {
+            console.log("Sub Category:", values);
+          }}
+          validationSchema={yup.object({
+            subtitle: yup.string().required("this field is required"),
+            parentCategory: yup.string().required("this field is required"),
+          })}
+        >
+          {({ setFieldValue }) => {
+            return (
+              <Form>
+                <Box display="flex" flexDirection="column" gap={4}>
+                  <Field
+                    id="subtitle"
+                    name="subtitle"
+                    label="Sub Category Title"
+                    as={TextField}
+                  />
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    sx={{
+                      "& > label": {
+                        fontSize: "16px",
+                        mb: 1,
+                      },
+                    }}
+                  >
+                    <label htmlFor="parentCategory" variant="filled">
+                      Parent Category
+                    </label>
+                    <Select
+                      onChange={(e) =>
+                        setFieldValue("parentCategory", e.target.value)
+                      }
+                      displayEmpty
+                      name="parentCategory"
+                    >
+                      <MenuItem value={10}>Cat 1</MenuItem>
+                      <MenuItem value={21}>Cat 2</MenuItem>
+                      <MenuItem value={22}>Cat 3</MenuItem>
+                    </Select>
+                  </Box>
+
+                  <Box display="flex" justifyContent="end" mt="20px">
+                    <Button
+                      type="submit"
+                      color="secondary"
+                      variant="contained"
+                      size="large"
+                    >
+                      {id ? "Update Category" : "Add Category"}
+                    </Button>
+                  </Box>
+                </Box>
+              </Form>
+            );
+          }}
+        </Formik>
+      )}
     </Box>
   );
 }

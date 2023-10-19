@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { AddPhotoAlternate } from "@mui/icons-material";
 
-function FileUploadCard() {
+function FileUploadCard({ name, setFieldValue }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (event) => {
@@ -17,6 +17,7 @@ function FileUploadCard() {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
+      setFieldValue(name, imageUrl);
     }
   };
 
@@ -25,11 +26,12 @@ function FileUploadCard() {
       <input
         type="file"
         accept="image/*"
-        id="image-upload"
+        id={name}
+        name={name}
         style={{ display: "none" }}
         onChange={handleImageChange}
       />
-      <label htmlFor="image-upload">
+      <label htmlFor={name}>
         <Button
           variant="contained"
           color="primary"
