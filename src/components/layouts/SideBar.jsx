@@ -216,13 +216,6 @@ function SideBar() {
               setSelected={setSelected}
             />
             <Item
-              title="Line Chart"
-              to="/line"
-              icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
               title="Geography Chart"
               to="/geography"
               icon={<MapOutlinedIcon />}
