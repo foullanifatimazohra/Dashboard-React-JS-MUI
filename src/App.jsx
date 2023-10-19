@@ -8,6 +8,7 @@ import { Dashboard } from "./pages/dashboard";
 import { Categories } from "./pages/categories";
 import { Products } from "./pages/products";
 import { SingleProduct } from "./pages/products/SingleProduct";
+import SingleCategory from "./pages/categories/SingleCategory";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -25,6 +26,8 @@ function App() {
               <Route path="/categories" element={<Categories />} />
               <Route path="/products/:id" element={<SingleProduct />} />
               <Route path="/products/add" element={<SingleProduct />} />
+              <Route path="/categories/:id" element={<SingleCategory />} />
+              <Route path="/categories/add" element={<SingleCategory />} />
             </Routes>
           </main>
         </div>
