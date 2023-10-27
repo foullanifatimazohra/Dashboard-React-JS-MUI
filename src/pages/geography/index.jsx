@@ -4,7 +4,7 @@ import { useTheme, Box } from "@mui/material";
 import { tokens } from "../../theme";
 import Header from "../../components/ui/Header";
 
-function Geography() {
+function Geography({ isDashboard = false }) {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
@@ -12,7 +12,7 @@ function Geography() {
       <Header title="Geography" subtitle="Simple Geography Chart" />
 
       <Box
-        height="75vh"
+        height={isDashboard ? "400px" : "75vh"}
         border={`1px solid ${colors.grey[100]}`}
         borderRadius="4px"
       >
